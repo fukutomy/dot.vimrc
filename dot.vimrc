@@ -33,6 +33,21 @@ NeoBundle "tpope/vim-projectionist"
 NeoBundle 'scrooloose/nerdtree'
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 NeoBundle 'tpope/vim-fugitive'
+" コード補完
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'marcus/rsense'
+NeoBundle 'supermomonga/neocomplete-rsense.vim'
+
+" 静的解析
+NeoBundle 'scrooloose/syntastic'
+
+" ドキュメント参照
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'yuku-t/vim-ref-ri'
+
+" メソッド定義元へのジャンプ
+NeoBundle 'szw/vim-tags'
+
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck

@@ -9,6 +9,7 @@ set tags=tags
 set laststatus=2
 set mouse=a
 set ttymouse=xterm2
+filetype on
 
 " neobundle settings {{{
 if has('vim_starting')
@@ -27,16 +28,36 @@ let g:neobundle_default_git_protocol='https'
 
 " neobundle#begin - neobundle#end の間に導入するプラグインを記載します。
 NeoBundleFetch 'Shougo/neobundle.vim'
+
 " ↓こんな感じが基本の書き方
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle "tpope/vim-projectionist"
 NeoBundle 'scrooloose/nerdtree'
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 NeoBundle 'tpope/vim-fugitive'
+
 " コード補完
-NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neocomplete'
+"use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '¥*ku¥*'
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '¥h¥w*'
+" Plugin key-mappings.
+inoremap <expr><C-g>  neocomplete#undo_completion()
+inoremap <expr><C-l>  neocomplete#complete_common_string()
+
+
 NeoBundle 'marcus/rsense'
-NeoBundle 'supermomonga/neocomplete-rsense.vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " 静的解析
 NeoBundle 'scrooloose/syntastic'
@@ -47,7 +68,15 @@ NeoBundle 'yuku-t/vim-ref-ri'
 
 " メソッド定義元へのジャンプ
 NeoBundle 'szw/vim-tags'
+nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:previm_open_cmd = 'open -a Firefox'
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck

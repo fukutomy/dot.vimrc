@@ -36,7 +36,6 @@ NeoBundle 'tpope/vim-fugitive'
 " コード補完
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'marcus/rsense'
-NeoBundle 'supermomonga/neocomplete-rsense.vim'
 
 " 静的解析
 NeoBundle 'scrooloose/syntastic'
@@ -48,6 +47,8 @@ NeoBundle 'yuku-t/vim-ref-ri'
 " メソッド定義元へのジャンプ
 NeoBundle 'szw/vim-tags'
 
+NeoBundle 'mxw/vim-jsx'
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck

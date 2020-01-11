@@ -81,6 +81,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2c2c2c ctermbg=240
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
 endfunction
+
 if has('syntax')
   augroup ZenkakuSpace
   autocmd!
@@ -90,5 +91,8 @@ if has('syntax')
   call ZenkakuSpace()
 endif
 
-
 colorscheme afterglow
+
+set termguicolors
+set guicursor=n-c-v:block-Cursor/Cursor-blinkon0
+set guicursor+=i-ci:ver1-Cursor/Cursor-blinkwait300-blinkon200-blinkoff150
